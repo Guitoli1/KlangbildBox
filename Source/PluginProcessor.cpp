@@ -1,5 +1,6 @@
 #include "PluginProcessor.h"
 #include "PluginEditor.h"
+#include "ScaledEditor.h"
 #include "IrTools.h"
 
 namespace
@@ -370,6 +371,6 @@ void BoxAudioProcessor::setStateInformation (const void* data, int sizeInBytes)
     }
 }
 
-juce::AudioProcessorEditor* BoxAudioProcessor::createEditor() { return new BoxAudioProcessorEditor (*this); }
+juce::AudioProcessorEditor* BoxAudioProcessor::createEditor() { return new kb::ScaledEditor (*this, new BoxAudioProcessorEditor (*this)); }
 
 juce::AudioProcessor* JUCE_CALLTYPE createPluginFilter() { return new BoxAudioProcessor(); }
